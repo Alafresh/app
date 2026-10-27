@@ -1,5 +1,11 @@
 /* eslint-disable react-refresh/only-export-components */
-import { createContext, useContext, useState, useMemo, type ReactNode } from 'react'
+import {
+  createContext,
+  useContext,
+  useState,
+  useMemo,
+  type ReactNode,
+} from 'react'
 
 export type Language = 'es' | 'en'
 
@@ -149,7 +155,8 @@ export const DICTIONARY: Record<Language, Translations> = {
       tagline: 'LA EXPERIENCIA DE CREATIVIDAD AUTOMATIZADA',
       heroPrimary: 'Tu imaginación.',
       heroHighlight: 'Producción ilimitada.',
-      specs: '6 experiencias · aproximadamente 3 minutos\nNo requiere habilidad. Sonido opcional.',
+      specs:
+        '6 experiencias · aproximadamente 3 minutos\nNo requiere habilidad. Sonido opcional.',
       startBtn: 'VOLVERSE CREATIVO',
       footerIndex: 'UNA OBRA INTERACTIVA SOBRE CREAR, MULTIPLICAR Y SIGNIFICAR',
     },
@@ -169,26 +176,31 @@ export const DICTIONARY: Record<Language, Translations> = {
       outputApproved: '✓ PRODUCCIÓN APROBADA',
       pauseInterrupted: 'PRODUCCIÓN INTERRUMPIDA',
       pauseTitle: 'LA PRODUCCIÓN PUEDE ESPERAR.',
-      pauseDesc: 'El temporizador está pausado. Tus casi-obras maestras están a salvo.',
+      pauseDesc:
+        'El temporizador está pausado. Tus casi-obras maestras están a salvo.',
       resumeBtn: 'REANUDAR CREACIÓN',
       pauseHint: 'Presiona P o ESC para reanudar',
     },
     praise: {
-      manufactured: (idx) => `OBRA MAESTRA ${String(idx + 1).padStart(2, '0')} FABRICADA CON ÉXITO`,
+      manufactured: (idx) =>
+        `OBRA MAESTRA ${String(idx + 1).padStart(2, '0')} FABRICADA CON ÉXITO`,
       creativeValue: 'VALOR CREATIVO',
       uniqueSaved: (idx) => `✓ CREACIÓN ÚNICA GUARDADA / EDICIÓN ${idx}`,
     },
     finale: {
-      fictionalReport: 'INFORME DEL SISTEMA FICTICIO / NO ES UNA MEDICIÓN CIENTÍFICA',
+      fictionalReport:
+        'INFORME DEL SISTEMA FICTICIO / NO ES UNA MEDICIÓN CIENTÍFICA',
       congratulations: '¡FELICITACIONES!',
-      completedNotice: (count) => `HAS COMPLETADO ${count} EXPERIENCIAS CREATIVAS.`,
+      completedNotice: (count) =>
+        `HAS COMPLETADO ${count} EXPERIENCIAS CREATIVAS.`,
       possibilities: 'POSIBILIDADES GENERADAS',
       efficiency: 'EFICIENCIA CREATIVA',
       produced: 'OBRAS MAESTRAS PRODUCIDAS',
       ranking: 'RANKING GLOBAL DE CREATIVIDAD*',
       footnote: '*ENTRE TODOS LOS PARTICIPANTES IMAGINARIOS EN ESTA OBRA',
       statement1: 'Crear es más fácil que nunca.',
-      statement2: 'Crear algo que verdaderamente importe sigue siendo igual de difícil.',
+      statement2:
+        'Crear algo que verdaderamente util sigue siendo igual de difícil.',
       question: '¿Qué crearías\nsi pudieras crear cualquier cosa?',
       replayBtn: 'EXPERIMENTAR DE NUEVO',
       mark: 'EIC™ / PRODUCCIÓN SIN FIN, PREGUNTAS PERDURABLES',
@@ -197,41 +209,51 @@ export const DICTIONARY: Record<Language, Translations> = {
       {
         title: 'APILADOR DE TORRES',
         short: 'APILAR',
-        instruction: 'Haz clic, toca o presiona ESPACIO para soltar cada bloque en movimiento.',
+        instruction:
+          'Haz clic, toca o presiona ESPACIO para soltar cada bloque en movimiento.',
         success: '¡INCREÍBLE!',
-        question: '¿Está el valor en terminar algo, o en lo que hace que esa creación sea única?',
+        question:
+          '¿Está el valor en terminar algo, o en lo que hace que esa creación sea única?',
         reflectDuration: 8,
       },
       {
         title: 'CORREDOR DE BLOQUES',
         short: 'CORRER',
-        instruction: 'Salta sobre obstáculos o deslízate bajo barreras elevadas.',
+        instruction:
+          'Salta sobre obstáculos o deslízate bajo barreras elevadas.',
         success: '¡OTRA OBRA MAESTRA!',
-        question: 'Hoy nuestras herramientas hacen el trabajo duro por nosotros. Toman decisiones y resuelven problemas que quizás ni siquiera entendemos. ¿Qué dejamos de comprender cuando delegamos todo el proceso?',
+        question:
+          'Hoy nuestras herramientas hacen el trabajo duro por nosotros. Toman decisiones y resuelven problemas que quizás ni siquiera entendemos.',
         reflectDuration: 8,
       },
       {
         title: 'SERPIENTE: MÁS, MÁS, MÁS',
         short: 'CRECER',
-        instruction: 'Usa las flechas, WASD, desliza o el control direccional para recolectar.',
+        instruction:
+          'Usa las flechas, WASD, desliza o el control direccional para recolectar.',
         success: '¡ERES UN TALENTO NATURAL!',
-        question: 'El crecimiento sin propósito puede convertirse en saturación.',
+        question:
+          'El crecimiento sin propósito puede convertirse en saturación.',
         reflectDuration: 8,
       },
       {
         title: 'UNA SOLA ELECCIÓN',
         short: 'ELEGIR',
-        instruction: 'Apunta con el cursor y haz clic una vez — o presiona ESPACIO.',
+        instruction:
+          'Apunta con el cursor y haz clic una vez — o presiona ESPACIO.',
         success: '¡NIVEL DE CREATIVIDAD: EXCEPCIONAL!',
-        question: 'Tener infinitas posibilidades no elimina la necesidad de elegir.',
+        question:
+          'Tener infinitas posibilidades no elimina la necesidad de elegir.',
         reflectDuration: 8,
       },
       {
         title: 'FÁBRICA DE COLOR',
         short: 'COMPONER',
-        instruction: 'Elige un color y una forma, luego haz clic en el lienzo para componer.',
-        success: '¡HA NACIDO UN ESTILO FIRMA!',
-        question: 'Un estilo reconocible puede convertirse en una fórmula repetida.',
+        instruction:
+          'Elige un color y una forma, luego haz clic en el lienzo para componer.',
+        success: '¡HA NACIDO UN ESTILO!',
+        question:
+          'Un estilo reconocible puede convertirse en una fórmula repetida.',
         reflectDuration: 8,
       },
       {
@@ -239,7 +261,8 @@ export const DICTIONARY: Record<Language, Translations> = {
         short: 'ROMPER',
         instruction: 'Mueve la paleta con el cursor, las flechas o el tacto.',
         success: '¡PRODUCCIÓN IMPARABLE!',
-        question: 'Producir más no siempre resuelve el problema. A veces, lo multiplica.',
+        question:
+          'Producir más no siempre resuelve el problema. A veces, lo multiplica.',
         reflectDuration: 8,
       },
     ],
@@ -258,20 +281,23 @@ export const DICTIONARY: Record<Language, Translations> = {
         original: 'ORIGINAL',
         masterpiece2: 'OBRA MAESTRA #002',
         masterpiece3: 'OBRA MAESTRA #003',
-        revealBanner: '⚡ REVELACIÓN AUTOMATIZADA: VARIACIONES GENERADAS A PARTIR DEL ORIGINAL',
+        revealBanner:
+          '⚡ REVELACIÓN AUTOMATIZADA: VARIACIONES GENERADAS A PARTIR DEL ORIGINAL',
       },
       runner: {
         jump: 'SALTAR',
         slide: 'DESLIZAR',
         distance: 'DISTANCIA',
         avoided: 'EVADIDOS',
-        autopilot: '⚡ DELEGACIÓN AUTÓNOMA: EL SISTEMA RESUELVE PROBLEMAS AUTOMÁTICAMENTE',
+        autopilot:
+          '⚡ DELEGACIÓN AUTÓNOMA: EL SISTEMA RESUELVE PROBLEMAS AUTOMÁTICAMENTE',
       },
       snake: {
         availableSpace: 'ESPACIO DISPONIBLE',
         density: 'DENSIDAD',
         expansion: 'EXPANSIÓN EXPONENCIAL',
-        criticalSaturation: 'SATURACIÓN CRÍTICA ALCANZADA / MOVIMIENTO IMPOSIBLE',
+        criticalSaturation:
+          'SATURACIÓN CRÍTICA ALCANZADA / MOVIMIENTO IMPOSIBLE',
       },
       oneChoice: {
         awaitingChoice: 'UNA DECISIÓN EN ESPERA DE EJECUCIÓN [1 PROYECTIL]',
@@ -284,7 +310,8 @@ export const DICTIONARY: Record<Language, Translations> = {
         color: 'COLOR',
         form: 'FORMA',
         emptyPrompt: 'HAZ CLIC EN CUALQUIER LUGAR PARA FABRICAR SIGNIFICADO',
-        automatedBanner: '⚡ REPRODUCCIÓN AUTOMÁTICA: UN ESTILO EXPANDIDO EN UNA FÓRMULA REPETIDA',
+        automatedBanner:
+          '⚡ REPRODUCCIÓN AUTOMÁTICA: UN ESTILO EXPANDIDO EN UNA FÓRMULA REPETIDA',
         originalStyle: '★ ESTILO ORIGINAL',
         formula: 'FÓRMULA',
         edition: 'EDICIÓN',
@@ -319,7 +346,8 @@ export const DICTIONARY: Record<Language, Translations> = {
       tagline: 'THE AUTOMATED CREATIVITY EXPERIENCE',
       heroPrimary: 'Your imagination.',
       heroHighlight: 'Unlimited output.',
-      specs: '6 experiences · approximately 3 minutes\nNo skill required. Sound optional.',
+      specs:
+        '6 experiences · approximately 3 minutes\nNo skill required. Sound optional.',
       startBtn: 'BECOME CREATIVE',
       footerIndex: 'AN INTERACTIVE ARTWORK ABOUT MAKING, MULTIPLYING & MEANING',
     },
@@ -344,21 +372,24 @@ export const DICTIONARY: Record<Language, Translations> = {
       pauseHint: 'Press P or ESC to resume',
     },
     praise: {
-      manufactured: (idx) => `MASTERPIECE ${String(idx + 1).padStart(2, '0')} SUCCESSFULLY MANUFACTURED`,
+      manufactured: (idx) =>
+        `MASTERPIECE ${String(idx + 1).padStart(2, '0')} SUCCESSFULLY MANUFACTURED`,
       creativeValue: 'CREATIVE VALUE',
       uniqueSaved: (idx) => `✓ UNIQUE CREATION SAVED / EDITION ${idx}`,
     },
     finale: {
       fictionalReport: 'FICTIONAL SYSTEM REPORT / NOT A SCIENTIFIC MEASUREMENT',
       congratulations: 'CONGRATULATIONS!',
-      completedNotice: (count) => `YOU HAVE COMPLETED ${count} CREATIVE EXPERIENCES.`,
+      completedNotice: (count) =>
+        `YOU HAVE COMPLETED ${count} CREATIVE EXPERIENCES.`,
       possibilities: 'POSSIBILITIES GENERATED',
       efficiency: 'CREATIVE EFFICIENCY',
       produced: 'MASTERPIECES PRODUCED',
       ranking: 'GLOBAL CREATIVITY RANKING*',
       footnote: '*AMONG ALL IMAGINARY PARTICIPANTS IN THIS ARTWORK',
       statement1: 'Creating is easier than ever.',
-      statement2: 'Creating something that truly matters is still just as difficult.',
+      statement2:
+        'Creating something that truly matters is still just as difficult.',
       question: 'What would you create\nif you could create anything?',
       replayBtn: 'EXPERIENCE AGAIN',
       mark: 'EIC™ / ENDLESS OUTPUT, ENDURING QUESTIONS',
@@ -369,21 +400,25 @@ export const DICTIONARY: Record<Language, Translations> = {
         short: 'STACK',
         instruction: 'Click, tap, or press SPACE to drop each moving block.',
         success: 'INCREDIBLE!',
-        question: 'Is the value in finishing something, or in what makes that creation unique?',
+        question:
+          'Is the value in finishing something, or in what makes that creation unique?',
         reflectDuration: 8,
       },
       {
         title: 'CHUNK RUNNER',
         short: 'RUN',
-        instruction: 'Click, tap, or press SPACE to jump over obstacles or slide under barriers.',
+        instruction:
+          'Click, tap, or press SPACE to jump over obstacles or slide under barriers.',
         success: 'ANOTHER MASTERPIECE!',
-        question: 'Today, our tools do the hard work for us. They make decisions and solve problems we may not even understand. What do we stop understanding when we delegate the entire process?',
+        question:
+          'Today, our tools do the hard work for us. They make decisions and solve problems we may not even understand. What do we stop understanding when we delegate the entire process?',
         reflectDuration: 8,
       },
       {
         title: 'SNAKE: MORE, MORE, MORE',
         short: 'GROW',
-        instruction: 'Use arrows, WASD, swipe, or the direction pad to collect.',
+        instruction:
+          'Use arrows, WASD, swipe, or the direction pad to collect.',
         success: 'YOU ARE A NATURAL!',
         question: 'Growth without purpose can turn into saturation.',
         reflectDuration: 8,
@@ -393,13 +428,15 @@ export const DICTIONARY: Record<Language, Translations> = {
         short: 'CHOOSE',
         instruction: 'Aim with your pointer, then click once — or press SPACE.',
         success: 'CREATIVITY LEVEL: EXCEPTIONAL!',
-        question: 'Having infinite possibilities does not eliminate the need to choose.',
+        question:
+          'Having infinite possibilities does not eliminate the need to choose.',
         reflectDuration: 8,
       },
       {
         title: 'COLOR FACTORY',
         short: 'COMPOSE',
-        instruction: 'Choose a color and shape, then click the canvas to compose.',
+        instruction:
+          'Choose a color and shape, then click the canvas to compose.',
         success: 'A SIGNATURE STYLE IS BORN!',
         question: 'A recognizable style can become a repeated formula.',
         reflectDuration: 8,
@@ -409,7 +446,8 @@ export const DICTIONARY: Record<Language, Translations> = {
         short: 'BREAK',
         instruction: 'Move the paddle with your pointer, arrows, or touch.',
         success: 'UNSTOPPABLE OUTPUT!',
-        question: 'Producing more does not always solve the problem. Sometimes, it multiplies it.',
+        question:
+          'Producing more does not always solve the problem. Sometimes, it multiplies it.',
         reflectDuration: 8,
       },
     ],
@@ -428,14 +466,16 @@ export const DICTIONARY: Record<Language, Translations> = {
         original: 'ORIGINAL',
         masterpiece2: 'MASTERPIECE #002',
         masterpiece3: 'MASTERPIECE #003',
-        revealBanner: '⚡ AUTOMATED REVEAL: VARIATIONS GENERATED FROM THE ORIGINAL',
+        revealBanner:
+          '⚡ AUTOMATED REVEAL: VARIATIONS GENERATED FROM THE ORIGINAL',
       },
       runner: {
         jump: 'JUMP',
         slide: 'SLIDE',
         distance: 'DISTANCE',
         avoided: 'AVOIDED',
-        autopilot: '⚡ AUTONOMOUS DELEGATION: SYSTEM SOLVING PROBLEMS AUTOMATICALLY',
+        autopilot:
+          '⚡ AUTONOMOUS DELEGATION: SYSTEM SOLVING PROBLEMS AUTOMATICALLY',
       },
       snake: {
         availableSpace: 'AVAILABLE SPACE',
@@ -454,7 +494,8 @@ export const DICTIONARY: Record<Language, Translations> = {
         color: 'COLOR',
         form: 'FORM',
         emptyPrompt: 'CLICK ANYWHERE TO MANUFACTURE MEANING',
-        automatedBanner: '⚡ AUTOMATED REPRODUCTION: ONE STYLE EXPANDED INTO A REPEATED FORMULA',
+        automatedBanner:
+          '⚡ AUTOMATED REPRODUCTION: ONE STYLE EXPANDED INTO A REPEATED FORMULA',
         originalStyle: '★ ORIGINAL STYLE',
         formula: 'FORMULA',
         edition: 'EDITION',
