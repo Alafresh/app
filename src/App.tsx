@@ -15,14 +15,13 @@ import { SnakeGame } from './games/SnakeGame'
 import { OneChoice } from './games/OneChoice'
 import { ColorFactory } from './games/ColorFactory'
 import { BreakEverything } from './games/BreakEverything'
-import { CopyPaste } from './games/CopyPaste'
 import { Mashup } from './games/Mashup'
 import './App.css'
 
 gsap.registerPlugin(useGSAP)
 
 type Stage = 'intro' | 'game' | 'praise' | 'reveal' | 'final'
-const gameComponents = [TowerStack, ChunkRunner, SnakeGame, OneChoice, ColorFactory, BreakEverything, CopyPaste, Mashup]
+const gameComponents = [TowerStack, ChunkRunner, SnakeGame, OneChoice, ColorFactory, BreakEverything, Mashup]
 
 export default function App() {
   const [stage, setStage] = useState<Stage>('intro')
@@ -58,7 +57,7 @@ export default function App() {
   useEffect(() => {
     if (stage === 'praise') {
       const timer = window.setTimeout(() => {
-        if (gameIndex < 7) {
+        if (gameIndex < 6) {
           setGameIndex((index) => index + 1)
           setStage('game')
         } else {
@@ -106,7 +105,7 @@ export default function App() {
     const artifact: Artifact = { ...result, game: gameIndex, title: GAME_META[gameIndex].title, id: `${gameIndex}-${Date.now()}` }
     setArtifacts((items) => [...items, artifact])
     setLastArtifact(artifact)
-    setSaturationLevel((gameIndex + 1) * 12.5)
+    setSaturationLevel((gameIndex + 1) * (100 / 7))
     setPaused(false)
     setStage('praise')
     playSound('success')

@@ -13,7 +13,7 @@ export function Introduction({ onStart }: { onStart: () => void }) {
         <div className="intro-copy">
           <span className="system-label">THE AUTOMATED CREATIVITY EXPERIENCE</span>
           <p>Your imagination.<br /><strong>Unlimited output.</strong></p>
-          <small>8 experiences · approximately 4 minutes<br />No skill required. Sound optional.</small>
+          <small>7 experiences · approximately 4 minutes<br />No skill required. Sound optional.</small>
         </div>
         <button className="become-button" onClick={onStart}>
           <span><Sparkles size={20} /> BECOME CREATIVE</span>

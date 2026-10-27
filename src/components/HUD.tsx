@@ -1,4 +1,5 @@
 import { Maximize2, Minimize2, Pause, Play, Volume2, VolumeX } from 'lucide-react'
+import { GAME_META } from '../lib/experience'
 
 type HUDProps = {
   gameIndex: number
@@ -12,14 +13,15 @@ type HUDProps = {
 }
 
 export function HUD({ gameIndex, inGame, muted, paused, fullscreen, onMute, onPause, onFullscreen }: HUDProps) {
+  const totalGames = GAME_META.length
   return (
     <header className="global-hud">
       <div className="brand-mark" aria-label="Everyone is Creative">
         <span className="brand-dot" /> EIC<span className="brand-tm">™</span>
       </div>
       {inGame && (
-        <div className="progress-track" aria-label={`Experience ${gameIndex + 1} of 8`}>
-          {Array.from({ length: 8 }, (_, index) => (
+        <div className="progress-track" aria-label={`Experience ${gameIndex + 1} of ${totalGames}`}>
+          {Array.from({ length: totalGames }, (_, index) => (
             <span key={index} className={index < gameIndex ? 'is-done' : index === gameIndex ? 'is-current' : ''} />
           ))}
         </div>
