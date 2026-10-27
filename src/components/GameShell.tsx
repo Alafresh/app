@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState, type ComponentType } from 'react'
 import { GAME_META, type GamePhase, type GameProps, type GameResult, type SoundName } from '../lib/experience'
 import { useGameClock } from '../hooks/useGameClock'
+import { useLanguage } from '../lib/i18n'
 
 type GameShellProps = {
   gameIndex: number
@@ -13,13 +14,15 @@ type GameShellProps = {
 const CONSEQUENCE_DURATION = 4 // seconds
 
 export function GameShell({ gameIndex, paused, onComplete, playSound, GameComponent }: GameShellProps) {
+  const { t } = useLanguage()
   const [score, setScore] = useState(0)
   const [phase, setPhase] = useState<GamePhase>('playing')
   const scoreRef = useRef(0)
   const artifactRef = useRef<GameResult>({ score: 0, label: 'BEGINNER MASTERPIECE', seed: 100 + gameIndex, values: [1] })
   const completedRef = useRef(false)
-  const meta = GAME_META[gameIndex]
-  const reflectTotal = meta.reflectDuration + 5 // add exactly 5 seconds
+
+  const meta = t.games[gameIndex] || GAME_META[gameIndex]
+  const reflectTotal = (meta.reflectDuration || 8) + 5 // add exactly 5 seconds
 
   // Game clock only runs during 'playing' phase
   const remaining = useGameClock(24, paused || phase !== 'playing', () => {
@@ -64,27 +67,41 @@ export function GameShell({ gameIndex, paused, onComplete, playSound, GameCompon
     playSound,
   }
 
+  const footerStatus =
+    phase === 'playing'
+      ? t.gameShell.engineActive
+      : phase === 'consequence'
+      ? t.gameShell.processing
+      : t.gameShell.reflecting
+
   return (
     <section className="game-shell" aria-labelledby="game-title">
       <div className="game-heading">
         <div>
-          <span className="system-label">CREATIVE OLYMPICS / {String(gameIndex + 1).padStart(2, '0')}</span>
+          <span className="system-label">
+            {t.gameShell.olympics} / {String(gameIndex + 1).padStart(2, '0')}
+          </span>
           <h1 id="game-title">{meta.title}</h1>
         </div>
         <div className="game-metrics" aria-live="polite">
-          <div><span>SCORE</span><strong>{String(score).padStart(4, '0')}</strong></div>
+          <div>
+            <span>{t.gameShell.score}</span>
+            <strong>{String(score).padStart(4, '0')}</strong>
+          </div>
           <div className={remaining < 6 && phase === 'playing' ? 'time-low' : ''}>
-            <span>TIME</span>
+            <span>{t.gameShell.time}</span>
             <strong>{phase === 'playing' ? remaining.toFixed(1) : '—'}</strong>
           </div>
         </div>
       </div>
       <p className="game-instruction">
-        {phase === 'playing' ? meta.instruction : phase === 'consequence' ? '' : ''}
+        {phase === 'playing' ? meta.instruction : ''}
       </p>
       <div className="playfield">
         <GameComponent {...props} />
-        {paused && phase === 'playing' && <div className="paused-stamp">OUTPUT PAUSED</div>}
+        {paused && phase === 'playing' && (
+          <div className="paused-stamp">{t.gameShell.outputPaused}</div>
+        )}
         {phase === 'reflection' && (
           <div className="reflection-overlay">
             <p className="reflection-text">{meta.question}</p>
@@ -92,9 +109,11 @@ export function GameShell({ gameIndex, paused, onComplete, playSound, GameCompon
         )}
       </div>
       <div className="game-footer">
-        <span><i className="status-light" /> {phase === 'playing' ? 'ENGINE ACTIVE' : phase === 'consequence' ? 'PROCESSING...' : 'REFLECTING...'}</span>
-        <span>ARTIFACT AUTO-SAVED</span>
-        <span>NO FAILURE STATES</span>
+        <span>
+          <i className="status-light" /> {footerStatus}
+        </span>
+        <span>{t.gameShell.artifactSaved}</span>
+        <span>{t.gameShell.noFailure}</span>
       </div>
     </section>
   )

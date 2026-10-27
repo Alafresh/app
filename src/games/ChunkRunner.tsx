@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef } from 'react'
 import { PALETTE, seeded, type GameProps } from '../lib/experience'
 import { useAnimationFrame } from '../hooks/useAnimationFrame'
 import { useCanvasResolution } from '../hooks/useCanvasResolution'
+import { useLanguage } from '../lib/i18n'
 
 type Obstacle = {
   id: number
@@ -24,6 +25,7 @@ type Particle = {
 }
 
 export function ChunkRunner({ paused, phase, onScore, onArtifact, playSound }: GameProps) {
+  const { t } = useLanguage()
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const size = useCanvasResolution(canvasRef)
   const playerRef = useRef({
@@ -363,7 +365,7 @@ export function ChunkRunner({ paused, phase, onScore, onArtifact, playSound }: G
       // Autopilot banner
       context.font = '700 12px "IBM Plex Mono"'
       context.fillStyle = '#55DDE0'
-      context.fillText('⚡ AUTONOMOUS DELEGATION: SYSTEM SOLVING PROBLEMS AUTOMATICALLY', 16, 50)
+      context.fillText(t.gameplay.runner.autopilot, 16, 50)
       context.restore()
     }
 
@@ -371,7 +373,7 @@ export function ChunkRunner({ paused, phase, onScore, onArtifact, playSound }: G
     context.fillStyle = '#aaa'
     context.font = '12px "IBM Plex Mono"'
     context.fillText(
-      `DISTANCE: ${String(Math.floor(distanceRef.current)).padStart(4, '0')}m   AVOIDED: ${scoreRef.current / 15}`,
+      `${t.gameplay.runner.distance}: ${String(Math.floor(distanceRef.current)).padStart(4, '0')}m   ${t.gameplay.runner.avoided}: ${scoreRef.current / 15}`,
       16,
       24
     )
@@ -395,10 +397,10 @@ export function ChunkRunner({ paused, phase, onScore, onArtifact, playSound }: G
       {phase === 'playing' && (
         <div style={{ position: 'absolute', right: 14, bottom: 14, display: 'flex', gap: 8 }}>
           <button className="game-action" onClick={slide} style={{ position: 'static' }}>
-            SLIDE <kbd>↓ / S</kbd>
+            {t.gameplay.runner.slide} <kbd>↓ / S</kbd>
           </button>
           <button className="game-action" onClick={jump} style={{ position: 'static' }}>
-            JUMP <kbd>SPACE / ↑</kbd>
+            {t.gameplay.runner.jump} <kbd>SPACE / ↑</kbd>
           </button>
         </div>
       )}

@@ -24,16 +24,15 @@ export type GameProps = {
   playSound: (name: SoundName) => void
 }
 
-export type SoundName = 'tap' | 'score' | 'jump' | 'break' | 'shot' | 'success' | 'combine'
+export type SoundName = 'tap' | 'score' | 'jump' | 'break' | 'shot' | 'success'
 
 export const GAME_META = [
   { title: 'TOWER STACK', short: 'STACK', instruction: 'Click, tap, or press SPACE to drop each moving block.', success: 'INCREDIBLE!', question: 'Is the value in finishing something, or in what makes that creation unique?', reflectDuration: 8 },
-  { title: 'CHUNK RUNNER', short: 'RUN', instruction: 'Click, tap, or press SPACE to jump over the obstacles.', success: 'ANOTHER MASTERPIECE!', question: 'Today, our tools do the hard work for us. They make decisions and solve problems we may not even understand. What do we stop understanding when we delegate the entire process?', reflectDuration: 8 },
+  { title: 'CHUNK RUNNER', short: 'RUN', instruction: 'Click, tap, or press SPACE to jump over obstacles or slide under barriers.', success: 'ANOTHER MASTERPIECE!', question: 'Today, our tools do the hard work for us. They make decisions and solve problems we may not even understand. What do we stop understanding when we delegate the entire process?', reflectDuration: 8 },
   { title: 'SNAKE: MORE, MORE, MORE', short: 'GROW', instruction: 'Use arrows, WASD, swipe, or the direction pad to collect.', success: 'YOU ARE A NATURAL!', question: 'Growth without purpose can turn into saturation.', reflectDuration: 8 },
   { title: 'ONE CHOICE', short: 'CHOOSE', instruction: 'Aim with your pointer, then click once — or press SPACE.', success: 'CREATIVITY LEVEL: EXCEPTIONAL!', question: 'Having infinite possibilities does not eliminate the need to choose.', reflectDuration: 8 },
   { title: 'COLOR FACTORY', short: 'COMPOSE', instruction: 'Choose a color and shape, then click the canvas to compose.', success: 'A SIGNATURE STYLE IS BORN!', question: 'A recognizable style can become a repeated formula.', reflectDuration: 8 },
   { title: 'BREAK EVERYTHING', short: 'BREAK', instruction: 'Move the paddle with your pointer, arrows, or touch.', success: 'UNSTOPPABLE OUTPUT!', question: 'Producing more does not always solve the problem. Sometimes, it multiplies it.', reflectDuration: 8 },
-  { title: 'MASHUP', short: 'CONNECT', instruction: 'Select two unlike ideas, then combine them into something new.', success: 'A NEW POSSIBILITY EXISTS!', question: 'Creativity isn\'t just generating possibilities. It\'s deciding which possibilities are worth pursuing.', reflectDuration: 8 },
 ] as const
 
 export const PRAISE_LINES = [
@@ -42,8 +41,7 @@ export const PRAISE_LINES = [
   'Growth looks good on you. More is more.',
   'One decision. Infinite personal branding potential.',
   'This exact style is now trending for 8,492 others.',
-  'You destroyed 24 blocks. The system made 48 more.',
-  'You made the connection. That part was yours.',
+  'You destroyed blocks. The system made twice as many.',
 ]
 
 export function seeded(seed: number) {

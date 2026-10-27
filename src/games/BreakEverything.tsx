@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 import { PALETTE, type GameProps } from '../lib/experience'
 import { useAnimationFrame } from '../hooks/useAnimationFrame'
 import { useCanvasResolution } from '../hooks/useCanvasResolution'
+import { useLanguage } from '../lib/i18n'
 
 type Brick = {
   id: number
@@ -16,6 +17,7 @@ type Brick = {
 const MAX_BLOCKS = 80
 
 export function BreakEverything({ paused, phase, onScore, onArtifact, playSound }: GameProps) {
+  const { t } = useLanguage()
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const size = useCanvasResolution(canvasRef)
   const paddleRef = useRef({ x: 300, width: 110 })
@@ -243,8 +245,8 @@ export function BreakEverything({ paused, phase, onScore, onArtifact, playSound 
     context.font = '12px "IBM Plex Mono"'
     const status =
       currentAliveCount >= MAX_BLOCKS
-        ? `SYSTEM CEILING REACHED / MAXIMUM DENSITY (${currentAliveCount} BLOCKS ACTIVE)`
-        : `RULE: 1 DESTROYED → 2 GENERATED / ACTIVE: ${currentAliveCount} (BROKEN: ${brokenRef.current})`
+        ? t.gameplay.break.ceiling
+        : `${t.gameplay.break.rule} / ${t.gameplay.break.active}: ${currentAliveCount} (${t.gameplay.break.broken}: ${brokenRef.current})`
     context.fillText(status, 14, 24)
   }, paused)
 
@@ -268,7 +270,7 @@ export function BreakEverything({ paused, phase, onScore, onArtifact, playSound 
         }}
       />
       {phase === 'playing' && (
-        <div className="paddle-hint">← MOVE PADDLE WITH TOUCH / MOUSE / ARROWS →</div>
+        <div className="paddle-hint">{t.gameplay.break.hint}</div>
       )}
     </div>
   )

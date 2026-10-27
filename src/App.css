@@ -41,7 +41,43 @@ kbd { padding: 2px 6px; border: 1px solid currentColor; border-radius: 2px; font
 .progress-track span { height: 4px; flex: 1; background: rgba(255,255,255,.16); transition: background-color 200ms, transform 200ms; }
 .progress-track .is-done { background: var(--magenta); }
 .progress-track .is-current { background: var(--lime); transform: scaleY(2); }
-.hud-actions { display: flex; gap: 8px; }
+.hud-actions { display: flex; align-items: center; gap: 8px; }
+.language-selector {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  height: 44px;
+  padding: 0 4px;
+  border: 1px solid var(--line);
+  background: rgba(8, 8, 8, 0.6);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+.lang-btn {
+  border: none;
+  background: transparent;
+  color: #888;
+  cursor: pointer;
+  padding: 6px 8px;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 600;
+  transition: all 160ms;
+}
+.lang-btn:hover {
+  color: #fff;
+}
+.lang-btn.is-active {
+  color: var(--ink);
+  background: var(--lime);
+  font-weight: 700;
+}
+.lang-divider {
+  color: #444;
+  font-size: 10px;
+}
 .icon-button { width: 44px; height: 44px; display: grid; place-items: center; border: 1px solid var(--line); background: rgba(8,8,8,.5); cursor: pointer; transition: color 160ms, background-color 160ms, transform 160ms; }
 .icon-button:hover { color: var(--ink); background: var(--lime); }
 .icon-button:active { transform: scale(.94); }

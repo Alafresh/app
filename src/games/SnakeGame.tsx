@@ -3,6 +3,7 @@ import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp } from 'lucide-react'
 import { PALETTE, seeded, type GameProps } from '../lib/experience'
 import { useAnimationFrame } from '../hooks/useAnimationFrame'
 import { useCanvasResolution } from '../hooks/useCanvasResolution'
+import { useLanguage } from '../lib/i18n'
 
 type Point = { x: number; y: number }
 const directions: Record<string, Point> = {
@@ -13,6 +14,7 @@ const directions: Record<string, Point> = {
 }
 
 export function SnakeGame({ paused, phase, onScore, onArtifact, playSound }: GameProps) {
+  const { t } = useLanguage()
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const size = useCanvasResolution(canvasRef)
   const snakeRef = useRef<Point[]>([
@@ -255,10 +257,10 @@ export function SnakeGame({ paused, phase, onScore, onArtifact, playSound }: Gam
     context.font = '12px "IBM Plex Mono"'
     const freeSpace = Math.max(0, totalCells - snakeRef.current.length)
     const statusText = saturatedRef.current
-      ? 'CRITICAL SATURATION REACHED / MOVEMENT IMPOSSIBLE'
+      ? t.gameplay.snake.criticalSaturation
       : isConsequence
-      ? `EXPONENTIAL EXPANSION (${Math.round(fillRatio * 100)}% OCCUPIED)`
-      : `AVAILABLE SPACE: ${freeSpace} (${Math.round(fillRatio * 100)}% DENSITY)`
+      ? `${t.gameplay.snake.expansion} (${Math.round(fillRatio * 100)}% OCCUPIED)`
+      : `${t.gameplay.snake.availableSpace}: ${freeSpace} (${Math.round(fillRatio * 100)}% ${t.gameplay.snake.density})`
     context.fillText(statusText, 14, 24)
   }, paused)
 

@@ -1,11 +1,13 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Circle, Square, Triangle } from 'lucide-react'
 import { PALETTE, seeded, type GameProps } from '../lib/experience'
+import { useLanguage } from '../lib/i18n'
 
 type Shape = { x: number; y: number; color: string; kind: number; rotation: number; scale: number }
 const colors = [...PALETTE]
 
 export function ColorFactory({ phase, onScore, onArtifact, playSound }: GameProps) {
+  const { t } = useLanguage()
   const [selectedColor, setSelectedColor] = useState(colors[0])
   const [selectedShape, setSelectedShape] = useState(0)
   const [shapes, setShapes] = useState<Shape[]>([])
@@ -84,7 +86,7 @@ export function ColorFactory({ phase, onScore, onArtifact, playSound }: GameProp
       {phase === 'playing' ? (
         <div className="factory-tools" aria-label="Composition tools">
           <div className="tool-group">
-            <span>COLOR</span>
+            <span>{t.gameplay.factory.color}</span>
             {colors.map((color) => (
               <button
                 key={color}
@@ -100,7 +102,7 @@ export function ColorFactory({ phase, onScore, onArtifact, playSound }: GameProp
             ))}
           </div>
           <div className="tool-group">
-            <span>FORM</span>
+            <span>{t.gameplay.factory.form}</span>
             {[Circle, Square, Triangle].map((Icon, index) => (
               <button
                 key={index}
@@ -121,9 +123,11 @@ export function ColorFactory({ phase, onScore, onArtifact, playSound }: GameProp
       ) : (
         <div className="factory-tools" style={{ justifyContent: 'space-between' }}>
           <span className="system-label" style={{ color: '#D9FF3F' }}>
-            ⚡ AUTOMATED REPRODUCTION: ONE STYLE EXPANDED INTO A REPEATED FORMULA
+            {t.gameplay.factory.automatedBanner}
           </span>
-          <span className="factory-count">EDITION 0{revealedCount} / 08</span>
+          <span className="factory-count">
+            {t.gameplay.factory.edition} 0{revealedCount} / 08
+          </span>
         </div>
       )}
 
@@ -157,7 +161,7 @@ export function ColorFactory({ phase, onScore, onArtifact, playSound }: GameProp
           ))}
           {shapes.length === 0 && (
             <text x="400" y="230" textAnchor="middle" fill="#777" fontFamily="IBM Plex Mono" fontSize="14">
-              CLICK ANYWHERE TO MANUFACTURE MEANING
+              {t.gameplay.factory.emptyPrompt}
             </text>
           )}
         </svg>
@@ -220,7 +224,7 @@ export function ColorFactory({ phase, onScore, onArtifact, playSound }: GameProp
                   fontWeight="bold"
                   fill={isOriginal ? '#080808' : '#aaaaaa'}
                 >
-                  {isOriginal ? '★ ORIGINAL STYLE' : `FORMULA #00${cardIdx + 1}`}
+                  {isOriginal ? t.gameplay.factory.originalStyle : `${t.gameplay.factory.formula} #00${cardIdx + 1}`}
                 </text>
               </g>
             )

@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { PALETTE, type GameProps } from '../lib/experience'
 import { useAnimationFrame } from '../hooks/useAnimationFrame'
 import { useCanvasResolution } from '../hooks/useCanvasResolution'
+import { useLanguage } from '../lib/i18n'
 
 type Target = {
   x: number
@@ -25,6 +26,7 @@ type Projectile = {
 const MAX_PROJECTILES = 64
 
 export function OneChoice({ paused, phase, onScore, onArtifact, playSound }: GameProps) {
+  const { t } = useLanguage()
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const size = useCanvasResolution(canvasRef)
   const aimRef = useRef({ x: size.width * 0.5, y: size.height * 0.35 })
@@ -294,10 +296,10 @@ export function OneChoice({ paused, phase, onScore, onArtifact, playSound }: Gam
     context.fillStyle = '#aaa'
     context.font = '12px "IBM Plex Mono"'
     if (!hasFired) {
-      context.fillText('ONE DECISION AWAITING EXECUTION [1 PROJECTILE]', 16, 24)
+      context.fillText(t.gameplay.oneChoice.awaitingChoice, 16, 24)
     } else {
       context.fillText(
-        `OUTCOMES BRANCHING: ${projectilesRef.current.length} / MAX ${MAX_PROJECTILES}  (SPLITS: ${splitCountRef.current})`,
+        `${t.gameplay.oneChoice.outcomesBranching}: ${projectilesRef.current.length} / MAX ${MAX_PROJECTILES}  (SPLITS: ${splitCountRef.current})`,
         16,
         24
       )
@@ -325,7 +327,7 @@ export function OneChoice({ paused, phase, onScore, onArtifact, playSound }: Gam
       />
       {phase === 'playing' && (
         <button className="game-action" onClick={fire} disabled={hasFired}>
-          {hasFired ? 'CHOICE UNLEASHED' : 'MAKE THE CHOICE'} <kbd>SPACE</kbd>
+          {hasFired ? t.gameplay.oneChoice.choiceMade : t.gameplay.oneChoice.takeShot} <kbd>SPACE</kbd>
         </button>
       )}
     </div>

@@ -33,7 +33,7 @@ export class CreativityAudio {
     const now = this.context.currentTime
     const notes: Record<SoundName, number[]> = {
       tap: [330], score: [660, 990], jump: [260, 520], break: [130, 90],
-      shot: [220, 880], success: [440, 554, 659, 880], combine: [293, 440, 740],
+      shot: [220, 880], success: [440, 554, 659, 880],
     }
     notes[name].forEach((frequency, index) => {
       const oscillator = this.context!.createOscillator()
